@@ -1,0 +1,4 @@
+/home/scelia/dev/spring-boot-restful-crud-api-example/src/main/java/it/simonecelia/Application.java
+/home/scelia/dev/spring-boot-restful-crud-api-example/src/main/java/it/simonecelia/service/ProductService.java
+/home/scelia/dev/spring-boot-restful-crud-api-example/src/main/java/it/simonecelia/repository/ProductRepository.java
+/home/scelia/dev/spring-boot-restful-crud-api-example/src/main/java/it/simonecelia/entity/Product.java
