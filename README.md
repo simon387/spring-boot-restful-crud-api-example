@@ -67,7 +67,7 @@ Try to execute test command (use browser or curl):
 curl localhost:8080/api/add?name=newUserName
 ```
 
-default REST API supports following commands:
+Default test REST API supports following commands:
 
 ```
 - /api/get?id=<PERSON_ID> (GET)
