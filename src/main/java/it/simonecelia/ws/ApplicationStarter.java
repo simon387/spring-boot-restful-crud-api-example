@@ -1,4 +1,4 @@
-package boot;
+package it.simonecelia.ws;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
