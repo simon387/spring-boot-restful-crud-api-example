@@ -1,18 +1,20 @@
 package it.simonecelia.ws.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.simonecelia.ws.entity.Person;
 
 import javax.persistence.*;
 
+import static it.simonecelia.ws.constants.Constants.ID;
+import static it.simonecelia.ws.constants.Constants.PHONE;
+
 @Entity
-@Table(name = "phone")
+@Table(name = PHONE)
 @SuppressWarnings("unused")
 public class Phone {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = ID)
 	private int id;
 
 	@ManyToOne(targetEntity = Person.class)

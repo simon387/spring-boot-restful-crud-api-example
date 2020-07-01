@@ -51,11 +51,11 @@ public class PersonService {
 		Optional<Person> personOptional = personRepository.findById(id);
 		if (personOptional.isPresent()) {
 			Person personEntity = personOptional.get();
-			if (name != null) {
+			if (null != name) {
 				personEntity.setName(name);
 				personRepository.save(personEntity);
 			}
-			if (phone != null) {
+			if (null != phone) {
 				Phone phoneEntity = new Phone();
 				phoneEntity.setPhone(phone);
 				phoneEntity.setPerson(personEntity);
