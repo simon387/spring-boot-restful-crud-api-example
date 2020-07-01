@@ -5,11 +5,9 @@ import it.simonecelia.ws.entity.Person;
 
 import javax.persistence.*;
 
-/**
- * Created by ashamsutdinov on 03.08.2017.
- */
 @Entity
 @Table(name = "phone")
+@SuppressWarnings("unused")
 public class Phone {
 
 	@Id

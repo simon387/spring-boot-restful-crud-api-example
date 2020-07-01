@@ -4,7 +4,7 @@ import it.simonecelia.ws.entity.Person;
 import it.simonecelia.ws.entity.Phone;
 import it.simonecelia.ws.repository.PersonRepository;
 import it.simonecelia.ws.repository.PhoneRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import it.simonecelia.ws.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,23 +15,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by ashamsutdinov on 01.08.2017.
- */
 @Controller
 @RequestMapping(path = "/api")
-public class MainController {
+public class PersonController {
 
-	@Autowired
-	private PersonRepository personRepository;
+	private final PersonRepository personRepository;
 
-	@Autowired
-	private PhoneRepository phoneRepository;
+	private final PhoneRepository phoneRepository;
+
+	private final PersonService personService;
+
+	public PersonController(PersonRepository personRepository, PhoneRepository phoneRepository, PersonService personService) {
+		this.personRepository = personRepository;
+		this.phoneRepository = phoneRepository;
+		this.personService = personService;
+	}
 
 	@GetMapping(path = "/get")
 	@ResponseBody
 	public Optional<Person> get(@RequestParam int id) {
-		return personRepository.findById(id);
+		return personService.getById(id);
 	}
 
 	@GetMapping(path = "/delete")
