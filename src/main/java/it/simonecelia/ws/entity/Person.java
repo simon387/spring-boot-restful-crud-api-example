@@ -3,11 +3,9 @@ package it.simonecelia.ws.entity;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by ashamsutdinov on 01.08.2017.
- */
 @Entity
 @Table(name = "person")
+@SuppressWarnings("unused")
 public class Person {
 
 	@Id

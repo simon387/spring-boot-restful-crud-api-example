@@ -75,3 +75,7 @@ default REST API supports following commands:
 - /api/edit?id=<PERSON_ID>[&name=<NEW_NAME>&phone=<NEW_PHONE>] (GET)
 - /api/delete?id=<PERSON_ID> (GET)
 ```
+
+## TODO
+
++ finish service package
