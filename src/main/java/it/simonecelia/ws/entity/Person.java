@@ -3,18 +3,22 @@ package it.simonecelia.ws.entity;
 import javax.persistence.*;
 import java.util.List;
 
+import static it.simonecelia.ws.constants.Constants.*;
+
 @Entity
-@Table(name = "person")
+@Table(name = PERSON)
 @SuppressWarnings("unused")
 public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = ID)
 	private int id;
 
+	@Column(name = NAME)
 	private String name;
-	@OneToMany(mappedBy = "person")
+
+	@OneToMany(mappedBy = PERSON)
 	private List<Phone> phones;
 
 	public String getName() {

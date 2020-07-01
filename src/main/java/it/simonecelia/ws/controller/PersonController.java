@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Optional;
 
+import static it.simonecelia.ws.constants.Constants.*;
+
 @Controller
 @RequestMapping(path = "/api")
 public class PersonController {
@@ -34,13 +36,13 @@ public class PersonController {
 
 	@GetMapping(path = "/add")
 	@ResponseBody
-	public Optional<Person> add(@RequestParam(value = "name") String name, @RequestParam(value = "phone", required = false) String phone) {
+	public Optional<Person> add(@RequestParam(value = NAME) String name, @RequestParam(value = PHONE, required = false) String phone) {
 		return personService.add(name, phone);
 	}
 
 	@GetMapping(path = "/edit")
 	@ResponseBody
-	public Optional<Person> edit(@RequestParam(value = "id") int id, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "phone", required = false) String phone) {
+	public Optional<Person> edit(@RequestParam(value = ID) int id, @RequestParam(value = NAME, required = false) String name, @RequestParam(value = PHONE, required = false) String phone) {
 		return personService.edit(id, name, phone);
 	}
 }
