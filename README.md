@@ -4,7 +4,7 @@
 Spring Boot RESTful CRUD API Examples with MySQL database
 
 + Gradle 4.0+
-+ Java 1.7+
++ Java 1.8+
 + Spring Boot
 + Spring JPA
 + Hibernate
