@@ -17,17 +17,17 @@ public class Phone {
 	@Column(name = ID)
 	private int id;
 
-	@ManyToOne(targetEntity = Person.class)
+	@ManyToOne(targetEntity = PersonEntity.class)
 	@JsonIgnore
-	private Person person;
+	private PersonEntity personEntity;
 	private String phone;
 
-	public Person getPerson() {
-		return person;
+	public PersonEntity getPersonEntity() {
+		return personEntity;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setPersonEntity(PersonEntity personEntity) {
+		this.personEntity = personEntity;
 	}
 
 	public String getPhone() {

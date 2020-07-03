@@ -1,6 +1,6 @@
 package it.simonecelia.ws.service;
 
-import it.simonecelia.ws.entity.Person;
+import it.simonecelia.ws.entity.PersonEntity;
 import it.simonecelia.ws.entity.Phone;
 import it.simonecelia.ws.repository.PersonRepository;
 import it.simonecelia.ws.repository.PhoneRepository;
@@ -23,7 +23,7 @@ public class PersonService {
 		this.phoneRepository = phoneRepository;
 	}
 
-	public Optional<Person> getById(int id) {
+	public Optional<PersonEntity> getById(int id) {
 		return personRepository.findById(id);
 	}
 
@@ -31,11 +31,11 @@ public class PersonService {
 		personRepository.deleteById(id);
 	}
 
-	public Optional<Person> add(String name, String phone) {
-		Person personEntity = new Person();
+	public Optional<PersonEntity> add(String name, String phone) {
+		PersonEntity personEntity = new PersonEntity();
 		Phone phoneEntity = new Phone();
 
-		phoneEntity.setPerson(personEntity);
+		phoneEntity.setPersonEntity(personEntity);
 		phoneEntity.setPhone(phone);
 		personEntity.setPhones(new ArrayList<>());
 		personEntity.getPhones().add(phoneEntity);
@@ -47,10 +47,10 @@ public class PersonService {
 		return Optional.of(personEntity);
 	}
 
-	public Optional<Person> edit(int id, String name, String phone) {
-		Optional<Person> personOptional = personRepository.findById(id);
+	public Optional<PersonEntity> edit(int id, String name, String phone) {
+		Optional<PersonEntity> personOptional = personRepository.findById(id);
 		if (personOptional.isPresent()) {
-			Person personEntity = personOptional.get();
+			PersonEntity personEntity = personOptional.get();
 			if (null != name) {
 				personEntity.setName(name);
 				personRepository.save(personEntity);
@@ -58,7 +58,7 @@ public class PersonService {
 			if (null != phone) {
 				Phone phoneEntity = new Phone();
 				phoneEntity.setPhone(phone);
-				phoneEntity.setPerson(personEntity);
+				phoneEntity.setPersonEntity(personEntity);
 				List<Phone> phones = personEntity.getPhones();
 				phones.add(phoneEntity);
 				personRepository.save(personEntity);
