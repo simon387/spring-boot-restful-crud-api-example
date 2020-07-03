@@ -1,5 +1,7 @@
 package it.simonecelia.ws.entity;
 
+import it.simonecelia.ws.dto.PersonDTO;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import static it.simonecelia.ws.constants.Constants.*;
 @Entity
 @Table(name = PERSON)
 @SuppressWarnings("unused")
-public class PersonEntity {
+public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +37,14 @@ public class PersonEntity {
 
 	public void setPhones(List<Phone> phones) {
 		this.phones = phones;
+	}
+
+	@Transient
+	public PersonDTO getDTO() {
+		PersonDTO personDTO = new PersonDTO();
+		personDTO.setId(id);
+		personDTO.setName(name);
+		personDTO.setPhones(phones);
+		return personDTO;
 	}
 }

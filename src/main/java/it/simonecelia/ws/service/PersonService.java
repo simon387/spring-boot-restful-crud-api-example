@@ -1,6 +1,6 @@
 package it.simonecelia.ws.service;
 
-import it.simonecelia.ws.entity.PersonEntity;
+import it.simonecelia.ws.entity.Person;
 import it.simonecelia.ws.entity.Phone;
 import it.simonecelia.ws.repository.PersonRepository;
 import it.simonecelia.ws.repository.PhoneRepository;
@@ -23,7 +23,7 @@ public class PersonService {
 		this.phoneRepository = phoneRepository;
 	}
 
-	public Optional<PersonEntity> getById(int id) {
+	public Optional<Person> getById(int id) {
 		return personRepository.findById(id);
 	}
 
@@ -31,37 +31,37 @@ public class PersonService {
 		personRepository.deleteById(id);
 	}
 
-	public Optional<PersonEntity> add(String name, String phone) {
-		PersonEntity personEntity = new PersonEntity();
+	public Optional<Person> add(String name, String phone) {
+		Person person = new Person();
 		Phone phoneEntity = new Phone();
 
-		phoneEntity.setPersonEntity(personEntity);
+		phoneEntity.setPerson(person);
 		phoneEntity.setPhone(phone);
-		personEntity.setPhones(new ArrayList<>());
-		personEntity.getPhones().add(phoneEntity);
-		personEntity.setName(name);
+		person.setPhones(new ArrayList<>());
+		person.getPhones().add(phoneEntity);
+		person.setName(name);
 
-		personRepository.save(personEntity);
+		personRepository.save(person);
 		phoneRepository.save(phoneEntity);
 
-		return Optional.of(personEntity);
+		return Optional.of(person);
 	}
 
-	public Optional<PersonEntity> edit(int id, String name, String phone) {
-		Optional<PersonEntity> personOptional = personRepository.findById(id);
+	public Optional<Person> edit(int id, String name, String phone) {
+		Optional<Person> personOptional = personRepository.findById(id);
 		if (personOptional.isPresent()) {
-			PersonEntity personEntity = personOptional.get();
+			Person person = personOptional.get();
 			if (null != name) {
-				personEntity.setName(name);
-				personRepository.save(personEntity);
+				person.setName(name);
+				personRepository.save(person);
 			}
 			if (null != phone) {
 				Phone phoneEntity = new Phone();
 				phoneEntity.setPhone(phone);
-				phoneEntity.setPersonEntity(personEntity);
-				List<Phone> phones = personEntity.getPhones();
+				phoneEntity.setPerson(person);
+				List<Phone> phones = person.getPhones();
 				phones.add(phoneEntity);
-				personRepository.save(personEntity);
+				personRepository.save(person);
 				phoneRepository.save(phoneEntity);
 			}
 		}

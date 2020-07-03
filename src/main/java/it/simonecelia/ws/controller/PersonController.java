@@ -1,6 +1,7 @@
 package it.simonecelia.ws.controller;
 
-import it.simonecelia.ws.entity.PersonEntity;
+import it.simonecelia.ws.dto.PersonDTO;
+import it.simonecelia.ws.entity.Person;
 import it.simonecelia.ws.service.PersonService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +25,15 @@ public class PersonController {
 
 	@GetMapping(path = "/get")
 	@ResponseBody
-	public Optional<PersonEntity> get(@RequestParam int id) {
-		return personService.getById(id);
+	public Optional<PersonDTO> get(@RequestParam int id) {
+		Optional<Person> optional = personService.getById(id);
+
+		if (optional.isPresent()) {
+			Person person = optional.get();
+			return Optional.of(person.getDTO());
+		} else {
+			return null;
+		}
 	}
 
 	@GetMapping(path = "/delete")
@@ -36,13 +44,13 @@ public class PersonController {
 
 	@GetMapping(path = "/add")
 	@ResponseBody
-	public Optional<PersonEntity> add(@RequestParam(value = NAME) String name, @RequestParam(value = PHONE, required = false) String phone) {
+	public Optional<Person> add(@RequestParam(value = NAME) String name, @RequestParam(value = PHONE, required = false) String phone) {
 		return personService.add(name, phone);
 	}
 
 	@GetMapping(path = "/edit")
 	@ResponseBody
-	public Optional<PersonEntity> edit(@RequestParam(value = ID) int id, @RequestParam(value = NAME, required = false) String name, @RequestParam(value = PHONE, required = false) String phone) {
+	public Optional<Person> edit(@RequestParam(value = ID) int id, @RequestParam(value = NAME, required = false) String name, @RequestParam(value = PHONE, required = false) String phone) {
 		return personService.edit(id, name, phone);
 	}
 }
