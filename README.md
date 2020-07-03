@@ -18,6 +18,7 @@ Create Database Example
 
 ```sql
 create schema spring_boot_demo;
+use spring_boot_demo;
 ```
 
 Create Table Example
@@ -78,7 +79,7 @@ Default test REST API supports following commands:
 
 ## TODO
 
-+ rename entity, add dtos
++ add dtos
 + add one annotation example
 + add StringPool
 + add Config
