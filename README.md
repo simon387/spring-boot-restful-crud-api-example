@@ -78,6 +78,7 @@ Default test REST API supports following commands:
 
 ## TODO
 
++ rename entity, add dtos
 + add one annotation example
 + add StringPool
 + add Config
