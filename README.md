@@ -79,6 +79,7 @@ Default test REST API supports following commands:
 
 ## TODO
 
++ remove optionals when not needed
 + add dtos
 + add one annotation example
 + add StringPool
